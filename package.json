@@ -1,6 +1,6 @@
 {
   "name": "project-lvl1-s204-by-vbwdev",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Hexlet brain-games training project",
   "main": "dist/index.js",
   "bin": {
@@ -26,5 +26,8 @@
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-0": "^6.24.1"
+  },
+  "dependencies": {
+    "readline-sync": "^1.4.7"
   }
 }
