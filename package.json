@@ -1,10 +1,11 @@
 {
   "name": "project-lvl1-s204-by-vbwdev",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Hexlet brain-games training project",
   "main": "dist/index.js",
   "bin": {
-    "brain-games": "dist/bin/brain-games.js"
+    "brain-games": "dist/bin/brain-games.js",
+    "brain-even": "dist/bin/brain-even.js"
   },
   "scripts": {
     "babel-node": "babel-node",
