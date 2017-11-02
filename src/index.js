@@ -4,6 +4,16 @@ import readlineSync from 'readline-sync';
 const CORRECT_ANSWERS_TO_WIN = 3;
 
 
+export const greeting = () => console.log('Welcome to the Brain Games!');
+
+
+export const acquaintance = () => {
+  const userName = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${userName}!\n`);
+  return userName;
+};
+
+
 const gameIter = (
   questionGenerator,
   answerChecker,
@@ -36,12 +46,11 @@ const gameIter = (
 
 
 const makeGame = (gameDescription, questionGenerator, answerChecker) => () => {
-  console.log('Welcome to the Brain Games!');
+  greeting();
 
   console.log(`${gameDescription}\n`);
 
-  const userName = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${userName}!\n`);
+  const userName = acquaintance();
 
   const isVictory = gameIter(questionGenerator, answerChecker);
 
@@ -50,7 +59,6 @@ const makeGame = (gameDescription, questionGenerator, answerChecker) => () => {
   } else {
     console.log(`Let's try again, ${userName}!`);
   }
-
 };
 
 export default makeGame;
