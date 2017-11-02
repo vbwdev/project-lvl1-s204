@@ -1,7 +1,7 @@
 import makeGame from '..';
 
 
-const getRandomNum = (min, max) => min + Math.round(Math.random() * (1 + max + -min));
+const getRandomNum = (min, max) => min + Math.round(Math.random() * (max - min));
 
 
 const checkGCD = (num1, num2, gcd) => {
