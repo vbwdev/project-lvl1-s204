@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-import { greeting, acquaintance, gameBrainEven } from '..';
+import game from '../games/brain-even';
 
-greeting();
-const userName = acquaintance();
-gameBrainEven(userName);
+game();

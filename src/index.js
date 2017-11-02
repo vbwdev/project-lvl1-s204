@@ -1,42 +1,33 @@
 import readlineSync from 'readline-sync';
 
 
-const PHRASE_CORRECT = 'yes';
-const PHRASE_INCORRECT = 'no';
 const CORRECT_ANSWERS_TO_WIN = 3;
-const MAX_DIGIT = 100;
 
 
-export const greeting = () => {
-  console.log('Welcome to the Brain Games!');
-};
-
-
-export const acquaintance = () => {
-  const userName = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${userName}!\n`);
-  return userName;
-};
-
-
-const generateBrainEvenQuestion = (maxDigit = MAX_DIGIT) => {
-  const questionValue = Math.round(Math.random() * maxDigit);
-  const correctAnswer = questionValue % 2 === 0 ? PHRASE_CORRECT : PHRASE_INCORRECT;
-  return [questionValue, correctAnswer];
-};
-
-
-const gameBrainEvenIter = (correctAnswers, correctAnswersToWin) => {
+const gameIter = (
+  questionGenerator,
+  answerChecker,
+  correctAnswers = 0,
+  correctAnswersToWin = CORRECT_ANSWERS_TO_WIN,
+) => {
   if (correctAnswers === correctAnswersToWin) {
     return true;
   }
 
-  const [questionValue, correctAnswer] = generateBrainEvenQuestion();
-  console.log(`Question: ${questionValue}`);
+  const [question, correctAnswer] = questionGenerator();
+  console.log(`Question: ${question}`);
+
   const userAnswer = readlineSync.question('Your answer: ');
-  if (correctAnswer === userAnswer) {
+  const isCorrectAnswer = answerChecker(userAnswer, correctAnswer);
+
+  if (isCorrectAnswer) {
     console.log('Correct!');
-    return gameBrainEvenIter(correctAnswers + 1, correctAnswersToWin);
+    return gameIter(
+      questionGenerator,
+      answerChecker,
+      correctAnswers + 1,
+      correctAnswersToWin,
+    );
   }
 
   console.log(`"${userAnswer}" is wrong answer :( Correct answer was "${correctAnswer}".`);
@@ -44,12 +35,22 @@ const gameBrainEvenIter = (correctAnswers, correctAnswersToWin) => {
 };
 
 
-export const gameBrainEven = (userName, correctAnswersToWin = CORRECT_ANSWERS_TO_WIN) => {
-  console.log(`Answer "${PHRASE_CORRECT}" if number even otherwise answer "${PHRASE_INCORRECT}".\n`);
-  const isVictory = gameBrainEvenIter(0, correctAnswersToWin);
+const makeGame = (gameDescription, questionGenerator, answerChecker) => () => {
+  console.log('Welcome to the Brain Games!');
+
+  console.log(`${gameDescription}\n`);
+
+  const userName = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${userName}!\n`);
+
+  const isVictory = gameIter(questionGenerator, answerChecker);
+
   if (isVictory) {
     console.log(`Congratulations, ${userName}!`);
   } else {
     console.log(`Let's try again, ${userName}!`);
   }
+
 };
+
+export default makeGame;
