@@ -1,6 +1,6 @@
 {
   "name": "project-lvl1-s204-by-vbwdev",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Hexlet brain-games training project",
   "main": "dist/index.js",
   "bin": {
