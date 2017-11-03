@@ -21,5 +21,4 @@ const questionGenerator = () => {
   return [num, answer];
 };
 
-
 export default makeGame(gameDescription, questionGenerator);
