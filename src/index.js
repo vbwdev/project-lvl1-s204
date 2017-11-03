@@ -12,7 +12,7 @@ export const acquaintance = () => {
 };
 
 const makeGame = (gameDescription, questionGenerator, answerChecker) => () => {
-  const gameIter = (correctAnswers) => {
+  const gameIter = (correctAnswers = 0) => {
     if (correctAnswers === CORRECT_ANSWERS_TO_WIN) {
       return true;
     }
@@ -38,7 +38,7 @@ const makeGame = (gameDescription, questionGenerator, answerChecker) => () => {
 
   const userName = acquaintance();
 
-  const isVictory = gameIter(0);
+  const isVictory = gameIter();
 
   if (isVictory) {
     console.log(`Congratulations, ${userName}!`);
