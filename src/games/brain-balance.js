@@ -1,7 +1,5 @@
-import makeGame from '..';
+import makeGame, { getRandomNum } from '..';
 
-
-const getRandomNum = (min, max) => min + Math.round(Math.random() * (max - min));
 
 const gameDescription = 'Balance the given number.';
 

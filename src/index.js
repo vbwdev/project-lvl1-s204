@@ -3,6 +3,8 @@ import readlineSync from 'readline-sync';
 
 const CORRECT_ANSWERS_TO_WIN = 3;
 
+export const getRandomNum = (min = 1, max = 100) => min + Math.round(Math.random() * (max - min));
+
 export const greeting = () => console.log('Welcome to the Brain Games!');
 
 export const acquaintance = () => {

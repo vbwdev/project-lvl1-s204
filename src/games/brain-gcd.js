@@ -1,7 +1,5 @@
-import makeGame from '..';
+import makeGame, { getRandomNum } from '..';
 
-
-const getRandomNum = (min, max) => min + Math.round(Math.random() * (max - min));
 
 const getGCD = (num1, num2) => {
   if (num2 > 0) {
@@ -13,8 +11,8 @@ const getGCD = (num1, num2) => {
 const gameDescription = 'Find the greatest common divisor of given numbers.';
 
 const questionGenerator = () => {
-  const num1 = getRandomNum(1, 100);
-  const num2 = getRandomNum(1, 100);
+  const num1 = getRandomNum();
+  const num2 = getRandomNum();
   const gcd = getGCD(num1, num2);
   return [`${num1} ${num2}`, gcd];
 };
