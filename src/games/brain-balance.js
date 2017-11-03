@@ -9,17 +9,10 @@ const getBalanceNum = (num) => {
   const digitsSum = num.toString().split('').reduce((acc, value) => acc + parseInt(value, 10), 0);
   const digitsCount = num.toString().length;
   const balanceBase = Math.floor(digitsSum / digitsCount);
-  const balanceRest = digitsSum % balanceBase;
-
-  const iter = (rest, count, acc) => {
-    if (count === 0) {
-      return acc;
-    }
-    const digit = rest > 0 ? balanceBase + 1 : balanceBase;
-    return iter(rest - 1, count - 1, `${digit}${acc}`);
-  };
-
-  return iter(balanceRest, digitsCount, '');
+  const balanceRest = digitsSum % digitsCount;
+  const baseNum = parseInt(balanceBase.toString().repeat(digitsCount), 10);
+  const restNum = parseInt('1'.repeat(balanceRest), 10) || 0;
+  return baseNum + restNum;
 };
 
 const questionGenerator = () => {
