@@ -3,7 +3,6 @@ import makeGame from '..';
 
 const getRandomNum = (min, max) => min + Math.round(Math.random() * (max - min));
 
-
 const checkGCD = (num1, num2, gcd) => {
   if (num2 > 0) {
     return checkGCD(num2, num1 % num2, gcd);
@@ -12,9 +11,7 @@ const checkGCD = (num1, num2, gcd) => {
   return Math.abs(num1) === gcd;
 };
 
-
 const gameDescription = 'Find the greatest common divisor of given numbers.';
-
 
 const questionGenerator = () => {
   const gcd = getRandomNum(1, 10);
@@ -31,8 +28,6 @@ const questionGenerator = () => {
   return [`${num1} ${num2}`, gcd];
 };
 
-
 const answerChecker = (userAnswer, correctAnswer) => parseInt(userAnswer, 10) === correctAnswer;
-
 
 export default makeGame(gameDescription, questionGenerator, answerChecker);

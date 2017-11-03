@@ -3,16 +3,13 @@ import readlineSync from 'readline-sync';
 
 const CORRECT_ANSWERS_TO_WIN = 3;
 
-
 export const greeting = () => console.log('Welcome to the Brain Games!');
-
 
 export const acquaintance = () => {
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${userName}!\n`);
   return userName;
 };
-
 
 const gameIter = (
   questionGenerator,
@@ -43,7 +40,6 @@ const gameIter = (
   console.log(`"${userAnswer}" is wrong answer :( Correct answer was "${correctAnswer}".`);
   return false;
 };
-
 
 const makeGame = (gameDescription, questionGenerator, answerChecker) => () => {
   greeting();
