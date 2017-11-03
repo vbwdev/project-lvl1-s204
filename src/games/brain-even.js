@@ -13,6 +13,4 @@ const questionGenerator = () => {
   return [question, correctAnswer];
 };
 
-const answerChecker = (userAnswer, correctAnswer) => userAnswer === correctAnswer;
-
-export default makeGame(gameDescription, questionGenerator, answerChecker);
+export default makeGame(gameDescription, questionGenerator);
