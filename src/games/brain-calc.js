@@ -23,6 +23,4 @@ const questionGenerator = () => {
   return [`${num1} ${operation} ${num2}`, correctAnswer];
 };
 
-const answerChecker = (userAnswer, correctAnswer) => parseInt(userAnswer, 10) === correctAnswer;
-
-export default makeGame(gameDescription, questionGenerator, answerChecker);
+export default makeGame(gameDescription, questionGenerator);
